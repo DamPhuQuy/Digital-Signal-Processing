@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "@damphuquy/agent-init",
+  "version": "3.8.2",
+  "framework": "RIPER-5",
+  "frameworkVersion": "3.8.2",
+  "language": "en",
+  "role": "swe",
+  "description": "Instruction and governance template manifest for AI coding agents and operational workspace.",
+  "installedAt": "2026-10-01T03:01:43.596Z",
+  "updatedAt": "2026-10-01T03:01:43.596Z",
+  "manifest": {
+    "core": [
+      "AGENTS.md",
+      "init.sh",
+      "instruction-version.json"
+    ],
+    "controlLayer": [
+      ".agents/README.md",
+      ".agents/behavior.md",
+      ".agents/guardrails.md",
+      ".agents/conventions/naming.md",
+      ".agents/conventions/repo-learnings.md"
+    ],
+    "seeds": [
+      "process/_seeds/_GUIDE.md",
+      "process/_seeds/task-template.md.seed",
+      "process/_seeds/task-lite.md.seed",
+      "process/_seeds/context-group.md.seed",
+      "process/_seeds/decision-template.md.seed",
+      "process/_seeds/plan-template.md.seed",
+      "process/_seeds/state-template.md.seed",
+      "process/_seeds/review-template.md.seed",
+      "process/_seeds/handoff-template.md.seed",
+      "process/_seeds/cancellation-template.md.seed",
+      "process/_seeds/pause-template.md.seed",
+      "process/_seeds/results-template.tsv.seed",
+      "process/_seeds/program-template.md.seed",
+      "process/_seeds/distillation-template.md.seed",
+      "process/_seeds/quality-document.md.seed",
+      "process/_seeds/product-sense.md.seed"
+    ],
+    "context": [
+      "process/context/all-context.md",
+      "process/context/planning/all-planning.md",
+      "process/context/tests/all-tests.md"
+    ],
+    "governance": [
+      "process/policy/policy-manifest.json",
+      "process/evals/eval-case.json"
+    ],
+    "protocols": [
+      "process/development-protocols/all-development-protocols.md",
+      "process/development-protocols/orchestration.md",
+      "process/development-protocols/implementation-standards.md",
+      "process/development-protocols/mcp-lsp-protocol.md",
+      "process/development-protocols/observability-and-evals.md",
+      "process/development-protocols/harness-verification-protocol.md",
+      "process/development-protocols/worktree-isolation-protocol.md",
+      "process/development-protocols/code-mode-batching.md"
+    ]
+  },
+  "updateStrategy": {
+    "slashCommand": "/update",
+    "checkCommand": "npm view @damphuquy/agent-init version",
+    "updateCommand": "npx @damphuquy/agent-init update",
+    "forceUpdateCommand": "npx @damphuquy/agent-init@latest . --force",
+    "preserveUserFiles": [
+      "AGENTS.md#validation_commands",
+      "process/features/**",
+      "process/general-plans/**"
+    ],
+    "safeToOverwrite": [
+      ".agents/**",
+      "process/_seeds/**",
+      "process/context/**",
+      "process/policy/**",
+      "process/evals/**",
+      "process/development-protocols/**",
+      "instruction-version.json"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DamPhuQuy/agent-instructions"
+  }
+}
