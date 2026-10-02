@@ -6,7 +6,7 @@ Giảng viên hướng dẫn: Ninh Khánh Duy
 
 Quy trình xử lý tuần tự theo kiến trúc 5 khối chuẩn (Pipeline Architecture):
     ┌────────────────────────────────────────────────────────────────────────┐
-    │ KHỐI 1: PREPROCESSING (TIỀN XỬ LÝ TÍN HIỆU)                           │
+    │ KHỐI 1: PREPROCESSING (TIỀN XỬ LÝ TÍN HIỆU)                            │
     │   • Bước 1: Nạp dữ liệu âm thanh WAV & Ground Truth .lab (Train/Test)  │
     │   • Bước 2: Phân khung (25ms, dịch 10ms) + Nhân cửa sổ Hamming         │
     └───────────────────────────────────┬────────────────────────────────────┘

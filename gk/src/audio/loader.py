@@ -42,7 +42,9 @@ def parse_lab(lab_path: Path | str) -> List[Tuple[float, float, str]]:
     return segments
 
 
-def parse_lab_file(lab_path: Path | str) -> Tuple[List[Tuple[float, float, str]], List[float]]:
+def parse_lab_file(
+    lab_path: Path | str,
+) -> Tuple[List[Tuple[float, float, str]], List[float]]:
     """Đọc file nhãn .lab và trích xuất danh sách đoạn cùng các mốc thời gian biên."""
     raw_segments = parse_lab(lab_path)
     if not raw_segments:
@@ -70,7 +72,9 @@ def parse_lab_file(lab_path: Path | str) -> Tuple[List[Tuple[float, float, str]]
     return merged_segments, boundaries
 
 
-def get_ground_truth_segments(lab_path: Path | str) -> Tuple[List[Tuple[float, float, str]], List[float]]:
+def get_ground_truth_segments(
+    lab_path: Path | str,
+) -> Tuple[List[Tuple[float, float, str]], List[float]]:
     """Lấy danh sách đoạn chuẩn và các mốc biên thời gian từ file .lab."""
     return parse_lab_file(lab_path)
 
@@ -96,7 +100,9 @@ def load_wav(file_path: Path | str, normalize: bool = True) -> Tuple[int, np.nda
     return int(fs), signal
 
 
-def load_audio_signal(wav_path: Path | str, lab_path: Path | str | None = None) -> AudioSignal:
+def load_audio_signal(
+    wav_path: Path | str, lab_path: Path | str | None = None
+) -> AudioSignal:
     """Nạp file âm thanh và file nhãn .lab tương ứng thành thực thể AudioSignal."""
     w_path = Path(wav_path)
     l_path = Path(lab_path) if lab_path else w_path.with_suffix(".lab")
@@ -134,10 +140,6 @@ def load_dataset(dir_path: Path | str) -> List[AudioSignal]:
     for w in wav_files:
         signals.append(load_audio_signal(w))
     return signals
-
-
-load_audio_dataset = load_dataset
-load_dataset_samples = load_dataset
 
 
 def create_frame_labels(signal: AudioSignal, timestamps: np.ndarray) -> np.ndarray:

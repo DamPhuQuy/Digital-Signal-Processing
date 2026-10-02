@@ -37,6 +37,7 @@ docs/
 | **Yêu cầu chi tiết đề tài VAD, 3 thuật toán và quy tắc lọc 200ms** | [`docs/guidelines/assignment_instructions_2026.docx`](guidelines/assignment_instructions_2026.docx) |
 | **Lý thuyết về STE, MA, Framing và phân đoạn tiếng nói/khoảng lặng** | [`docs/lectures/README.md`](lectures/README.md) |
 | **Công thức toán học & cài đặt 3 thuật toán (Binary Search, Histogram, Gaussian)** | [`docs/theory/README.md`](theory/README.md) |
+| **Tài liệu chuyên sâu về Thuật toán Thống kê Gauss & Lý thuyết Bayes** | [`docs/theory/gauss.md`](theory/gauss.md) |
 | **Hình ảnh mẫu 4 đồ thị hiển thị ở 4 góc màn hình** | [`docs/guidelines/samples/sampleFigure.bmp`](guidelines/samples/sampleFigure.bmp) |
 
 ---
