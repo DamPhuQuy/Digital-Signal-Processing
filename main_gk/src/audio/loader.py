@@ -12,9 +12,6 @@ warnings.filterwarnings("ignore", category=wav.WavFileWarning)
 def preprocessing(wav_path):
     fs, x = wav.read(wav_path)
 
-    if x.ndim > 1:
-        x = np.mean(x, axis=1)
-
     if np.issubdtype(x.dtype, np.floating):
         preprocessed = x.astype(np.float32)
     elif np.issubdtype(x.dtype, np.signedinteger):
@@ -57,11 +54,3 @@ def load_audio(wav_path, lab_path=None):
         gt_segments=gt_segments,
         gt_boundaries=gt_boundaries,
     )
-
-
-def load_dataset(dir_path):
-    p = Path(dir_path)
-    if not p.is_dir():
-        raise NotADirectoryError(f"Thư mục không tồn tại: {p}")
-    return [load_audio(w) for w in sorted(p.glob("*.wav"))]
-

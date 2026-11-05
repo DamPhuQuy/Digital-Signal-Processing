@@ -28,7 +28,8 @@ class FrameSignal:
 @dataclass
 class ShortTimeFeatures:
     ste_raw: np.ndarray
-    ste_norm: np.ndarray  # preprocessed
+    ste_norm: np.ndarray  # preprocessed min-max
+    log_ste: np.ndarray = field(default_factory=lambda: np.array([]))
 
 
 @dataclass
@@ -50,7 +51,19 @@ class Threshold:
     mean_silence: float = 0.0
     std_silence: float = 0.0
 
-    def get_threshold(self, algorithm: str, is_phone: bool) -> float:
+    def get_threshold(
+        self, algorithm: str, is_phone: bool, use_common: bool = False
+    ) -> float:
+        if use_common:
+            if algorithm == "binary":
+                return self.binary_threshold
+            elif algorithm == "histogram":
+                return self.histogram_threshold
+            elif algorithm == "gaussian":
+                return self.gaussian_threshold
+            else:
+                raise ValueError(f"Unknown algorithm: {algorithm}")
+
         if algorithm == "binary":
             return (
                 self.binary_threshold_phone
@@ -87,9 +100,6 @@ class SegmentationResult:
     segments: list[tuple[float, float, str]]  # [(start, end, "speech")]
 
 
-from dataclasses import dataclass, field
-
-
 @dataclass
 class EvaluationMetrics:
     signal_name: str
@@ -100,3 +110,4 @@ class EvaluationMetrics:
     rmse_ms: float
     predicted_boundaries: list[float]
     gt_boundaries: list[float]
+    snr_db: float = 0.0

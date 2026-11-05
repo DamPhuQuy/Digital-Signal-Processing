@@ -16,7 +16,11 @@ def apply_framing(
     fs: int = 16000,
 ) -> FrameSignal:
 
-    x = signal.signal if isinstance(signal, AudioSignal) else signal
+    if isinstance(signal, AudioSignal):
+        x = signal.signal
+        fs = signal.fs
+    else:
+        x = signal
 
     frame_len: int = int(round(frame_size_ms * 1e-3 * fs))
     frame_shift: int = int(round(frame_shift_ms * 1e-3 * fs))
